@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/', htmlRoutes);
-app.use('/', apiRoutes);
+app.use('', apiRoutes);
 
 
 
@@ -21,8 +21,9 @@ app.use('/', apiRoutes);
 app.post("/api/notes", (res, req) => {
   let newNote = req.body;
   let noteList = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
+  console.log(noteList)
   let noteListLength = (noteList.length).toString();
-
+  
   //this is where the id for each note
   newNote.id = noteListLength;
 
@@ -31,6 +32,7 @@ app.post("/api/notes", (res, req) => {
 
   //writes new data to json file and shows updated note
   fs.writeFileSync("./db/db.json", JSON.stringify(noteList));
+
   res.json(noteList);
 });
 
