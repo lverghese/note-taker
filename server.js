@@ -35,18 +35,6 @@ app.post("/api/notes", (res, req) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
   });
