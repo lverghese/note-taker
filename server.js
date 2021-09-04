@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/', htmlRoutes);
+app.use('/', apiRoutes);
 
 
 //post receive new note to save, add to json, and return to user
