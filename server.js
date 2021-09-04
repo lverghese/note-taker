@@ -16,11 +16,12 @@ app.use('/', htmlRoutes);
 app.use('/', apiRoutes);
 
 
+
 //post receive new note to save, add to json, and return to user
 app.post("/api/notes", (res, req) => {
   let newNote = req.body;
   let noteList = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
-  let noteListLength = (noteListLength.length).toString();
+  let noteListLength = (noteList.length).toString();
 
   //this is where the id for each note
   newNote.id = noteListLength;
