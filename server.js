@@ -1,5 +1,6 @@
 const fs = require("fs");
 const express = require("express");
+const path = require('path');
 
 const htmlRoutes = require('./routes/htmlRoutes');
 const apiRoutes = require('./routes/apiRoutes')
@@ -13,22 +14,21 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/', htmlRoutes);
-app.use('', apiRoutes);
-
+ app.use('', apiRoutes);
 
 
 //post receive new note to save, add to json, and return to user
-app.post("/api/notes", (res, req) => {
+app.post("/api/notes", (req, res) => {
   let newNote = req.body;
   let noteList = JSON.parse(fs.readFileSync('./db/db.json', 'utf8'));
   console.log(noteList)
-  let noteListLength = (noteList.length).toString();
+  let noteListLength = (noteList.notes.length).toString();
   
   //this is where the id for each note
   newNote.id = noteListLength;
 
   //push new or updated note to db.json data
-  noteList.push(newNote);
+  noteList.notes.push(newNote);
 
   //writes new data to json file and shows updated note
   fs.writeFileSync("./db/db.json", JSON.stringify(noteList));
