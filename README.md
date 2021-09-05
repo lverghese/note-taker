@@ -11,6 +11,12 @@ The user will need to enter in the following command:
 'npm install express'
 
 
+## Built With
+* Javascript
+* HTML
+* Express.JS
+* Node.JS
+
 ## GitHub Repo
 https://github.com/lverghese/note-taker.git
 
